@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ManagementController;
+use App\Http\Controllers\VisitorController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::redirect('/', '/attachments');
+
+Route::get('/attachments', [VisitorController::class, 'attachments']);
+Route::get('/attachments/{attachment}/download', [VisitorController::class, 'downloadAttachment'])
+    ->name('attachment.download');
+Route::get('/snippets', [VisitorController::class, 'snippets']);
+Route::get('/links', [VisitorController::class, 'links']);
+
+Route::prefix('administrator')->group(function () {
+    Route::get('/attachments', [ManagementController::class, 'attachments']);
+    Route::get('/snippets', [ManagementController::class, 'snippets']);
+    Route::get('/links', [ManagementController::class, 'links']);
+});
+
+Route::fallback(function () {
+    return redirect()->to('/attachments');
 });
