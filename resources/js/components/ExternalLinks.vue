@@ -7,7 +7,7 @@
         </div>
 
         <link-table
-            :data.sync="links.data"
+            :data.sync="links"
             @update="updateLinkData"
             @link-deleted="removeLink"
         />
@@ -44,25 +44,25 @@ export default {
         getAllLinks() {
             this.loading = true;
             axios.get('/api/v1/links')
-                .then(response => this.links = response.data)
+                .then(response => this.links = response.data.data)
                 .catch(error => this.$showError(error.response.data.message))
                 .finally(() => this.loading = false)
         },
 
         addToLinks(link) {
-            this.links.data.unshift(link)
+            this.links.unshift(link)
         },
 
         updateLinkData(data) {
-            this.links.data.forEach((item, index) => {
+            this.links.forEach((item, index) => {
                 if (data.id === item.id) {
-                    Object.assign(this.links.data[index], data)
+                    Object.assign(this.links[index], data)
                 }
             })
         },
 
         removeLink(link) {
-            this.links.data = this.links.data.filter(item => item.id !== link.id);
+            this.links = this.links.filter(item => item.id !== link.id);
         }
     }
 }

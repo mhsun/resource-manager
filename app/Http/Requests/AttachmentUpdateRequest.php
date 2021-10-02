@@ -27,7 +27,7 @@ class AttachmentUpdateRequest extends FormRequest
     {
         return [
             'title' => 'required|max:150',
-            'file'  => 'sometimes'
+            'file'  => 'sometimes|mimes:pdf'
         ];
     }
 

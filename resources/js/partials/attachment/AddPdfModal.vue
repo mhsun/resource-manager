@@ -14,6 +14,7 @@
                     <input
                         class="form-control"
                         type="file"
+                        accept="application/pdf"
                         @change="uploadFile"
                         ref="pdf"
                     >
@@ -94,6 +95,7 @@ export default {
         },
 
         resetForm(formName) {
+            this.$refs.pdf.value = null;
             this.$refs[formName].resetFields();
         },
 

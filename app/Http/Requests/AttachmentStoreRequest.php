@@ -25,7 +25,7 @@ class AttachmentStoreRequest extends FormRequest
     {
         return [
             'title' => 'required|max:150',
-            'file'  => 'required'
+            'file'  => 'required|mimes:pdf'
         ];
     }
 }

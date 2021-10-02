@@ -3786,7 +3786,7 @@ __webpack_require__.r(__webpack_exports__);
 
       this.loading = true;
       axios.get('/api/v1/links').then(function (response) {
-        return _this.links = response.data;
+        return _this.links = response.data.data;
       })["catch"](function (error) {
         return _this.$showError(error.response.data.message);
       })["finally"](function () {
@@ -3794,19 +3794,19 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     addToLinks: function addToLinks(link) {
-      this.links.data.unshift(link);
+      this.links.unshift(link);
     },
     updateLinkData: function updateLinkData(data) {
       var _this2 = this;
 
-      this.links.data.forEach(function (item, index) {
+      this.links.forEach(function (item, index) {
         if (data.id === item.id) {
-          Object.assign(_this2.links.data[index], data);
+          Object.assign(_this2.links[index], data);
         }
       });
     },
     removeLink: function removeLink(link) {
-      this.links.data = this.links.data.filter(function (item) {
+      this.links = this.links.filter(function (item) {
         return item.id !== link.id;
       });
     }
@@ -4043,6 +4043,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "AddPdfModal",
@@ -4116,6 +4117,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     resetForm: function resetForm(formName) {
+      this.$refs.pdf.value = null;
       this.$refs[formName].resetFields();
     },
     uploadFile: function uploadFile() {
@@ -4260,6 +4262,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "EditAttachmentModal",
@@ -4323,6 +4326,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     resetForm: function resetForm(formName) {
+      this.$refs.pdf.value = null;
       this.$refs[formName].resetFields();
     },
     uploadFile: function uploadFile() {
@@ -88782,10 +88786,10 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("link-table", {
-        attrs: { data: _vm.links.data },
+        attrs: { data: _vm.links },
         on: {
           "update:data": function($event) {
-            return _vm.$set(_vm.links, "data", $event)
+            _vm.links = $event
           },
           update: _vm.updateLinkData,
           "link-deleted": _vm.removeLink
@@ -89040,7 +89044,7 @@ var render = function() {
                 _c("input", {
                   ref: "pdf",
                   staticClass: "form-control",
-                  attrs: { type: "file" },
+                  attrs: { type: "file", accept: "application/pdf" },
                   on: { change: _vm.uploadFile }
                 }),
                 _vm._v(" "),
@@ -89295,7 +89299,7 @@ var render = function() {
                 _c("input", {
                   ref: "pdf",
                   staticClass: "form-control",
-                  attrs: { type: "file" },
+                  attrs: { type: "file", accept: "application/pdf" },
                   on: { change: _vm.uploadFile }
                 })
               ]),
