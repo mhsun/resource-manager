@@ -51,6 +51,17 @@ class AttachmentController extends ApiController
     }
 
     /**
+     * @param int $id
+     *
+     */
+    public function show(int $id)
+    {
+        $attachment = Attachment::findOrFail($id);
+
+        return response()->download($attachment->formattedPath);
+    }
+
+    /**
      * @param AttachmentUpdateRequest $request
      * @param int $id
      *

@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::prefix('v1')->group(function () {
-    Route::apiResource('/attachments', AttachmentController::class)->except('show');
-    Route::apiResource('/snippets', SnippetController::class);
+    Route::apiResource('/attachments', AttachmentController::class);
+    Route::apiResource('/snippets', SnippetController::class)->except('show');
     Route::apiResource('/links', LinkController::class)->except('show');
 });

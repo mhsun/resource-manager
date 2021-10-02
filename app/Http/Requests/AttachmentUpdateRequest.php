@@ -33,13 +33,14 @@ class AttachmentUpdateRequest extends FormRequest
 
     public function uploadIfFileExistAgainst(Attachment $attachment)
     {
+        $attachment->title = $this->get('title');
+
         if ($this->hasFile('file')) {
             $path = $this->file('file')->store("attachments");
             Storage::delete(storage_path("app/{$attachment->path}"));
-
-            $attachment->title = $this->get('title');
             $attachment->path = $path;
-            $attachment->save();
         }
+
+        $attachment->save();
     }
 }

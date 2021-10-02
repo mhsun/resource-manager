@@ -10,9 +10,18 @@
         "production": "mix --production"
     },
     "devDependencies": {
-        "axios": "^0.21",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
-        "postcss": "^8.1.14"
+        "postcss": "^8.1.14",
+        "vue-loader": "^15.9.7",
+        "vue-template-compiler": "^2.6.12"
+    },
+    "dependencies": {
+        "axios": "^0.21",
+        "bootstrap": "^5.1.1",
+        "bootstrap-vue": "^2.21.2",
+        "element-ui": "^2.15.6",
+        "sweetalert2": "^11.1.7",
+        "vue": "^2.6.12"
     }
 }

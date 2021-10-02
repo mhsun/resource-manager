@@ -44,24 +44,6 @@ class SnippetController extends ApiController
     }
 
     /**
-     * @param int $id
-     *
-     * @return JsonResponse
-     */
-    public function show(int $id): JsonResponse
-    {
-        try {
-            return $this->respondWithSuccess(
-                "Data fetched successfully", Snippet::findOrFail($id)
-            );
-        } catch (\Exception $exception) {
-            return $this->respondWithError(
-                "Failed to fetch data", $exception->getMessage(), Response::HTTP_NOT_FOUND
-            );
-        }
-    }
-
-    /**
      * @param SnippetRequest $request
      * @param int $id
      *
