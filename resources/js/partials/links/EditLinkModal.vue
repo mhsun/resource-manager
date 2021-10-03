@@ -72,7 +72,7 @@ export default {
                         })
                         .catch(error => {
                             this.closeModal();
-                            this.$showError(error.response.data.message)
+                            this.$showError(this.$filterErrorMessageFrom(error));
                         })
                 } else {
                     this.$showError("Failed to submit data")

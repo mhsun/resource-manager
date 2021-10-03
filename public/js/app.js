@@ -4106,7 +4106,7 @@ __webpack_require__.r(__webpack_exports__);
             })["catch"](function (error) {
               _this.closeModal();
 
-              _this.$showError(error.response.data.message);
+              _this.$showError(_this.$filterErrorMessageFrom(error));
             });
           }
         } else {
@@ -4318,7 +4318,7 @@ __webpack_require__.r(__webpack_exports__);
 
             _this.$showSuccess(response.data.message);
           })["catch"](function (error) {
-            return _this.$showError(error.response.data.message);
+            return _this.$showError(_this.$filterErrorMessageFrom(error));
           });
         } else {
           _this.$showError("Failed to submit data");
@@ -4445,7 +4445,7 @@ __webpack_require__.r(__webpack_exports__);
 
             _this.closeModal();
 
-            _this.$showError(error.response.data.message);
+            _this.$showError(_this.$filterErrorMessageFrom(error));
           });
         } else {
           _this.$showError("Failed to submit data");
@@ -4559,7 +4559,7 @@ __webpack_require__.r(__webpack_exports__);
           })["catch"](function (error) {
             _this.closeModal();
 
-            _this.$showError(error.response.data.message);
+            _this.$showError(_this.$filterErrorMessageFrom(error));
           });
         } else {
           _this.$showError("Failed to submit data");
@@ -5053,6 +5053,10 @@ vue__WEBPACK_IMPORTED_MODULE_1__["default"].prototype.$showSuccess = function (m
 
 vue__WEBPACK_IMPORTED_MODULE_1__["default"].prototype.$showError = function (message) {
   return sweetalert2__WEBPACK_IMPORTED_MODULE_0__.fire('Error!', message, 'error');
+};
+
+vue__WEBPACK_IMPORTED_MODULE_1__["default"].prototype.$filterErrorMessageFrom = function (err) {
+  return Object.values(err.response.data.errors).length ? Object.values(err.response.data.errors)[0].toString() : err.response.data.message;
 };
 
 /***/ }),

@@ -59,7 +59,7 @@ The default file storage settings is set to `'public'`. So set
 
 `php artisan storage:link`
 
-The max file upload size is kept to 2Mb.
+The max file upload size is kept to 5Mb.
 
 #### Running the application
 Before running the application you need to install the node modules in your project. Hit the following commands to install them

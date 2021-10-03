@@ -27,7 +27,15 @@ class AttachmentUpdateRequest extends FormRequest
     {
         return [
             'title' => 'required|max:150',
-            'file'  => 'sometimes|mimes:pdf|max:2000'
+            'file'  => 'sometimes|mimes:pdf|max:5000'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'file.mimes' => 'Only pdf files are allowed',
+            'file.max'   => 'File should not greater than 5mb',
         ];
     }
 

@@ -28,3 +28,9 @@ Vue.prototype.$showError = function (message) {
         'error',
     )
 };
+
+Vue.prototype.$filterErrorMessageFrom = function (err) {
+    return Object.values(err.response.data.errors).length
+        ? Object.values(err.response.data.errors)[0].toString()
+        : err.response.data.message;
+}

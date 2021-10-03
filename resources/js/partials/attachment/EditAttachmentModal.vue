@@ -77,7 +77,7 @@ export default {
                             this.closeModal();
                             this.$showSuccess(response.data.message)
                         })
-                        .catch(error => this.$showError(error.response.data.message))
+                        .catch(error => this.$showError(this.$filterErrorMessageFrom(error)))
                 } else {
                     this.$showError("Failed to submit data")
                 }
