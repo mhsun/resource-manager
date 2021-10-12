@@ -1,4 +1,4 @@
-## Resource Manager
+## Resource-Manager
 
 This is a simple resource manager where "administrator" can add resources and "visitor" can browse them.
 As you can see there are two types of user for the application. So there routes are separated with a prefix.
